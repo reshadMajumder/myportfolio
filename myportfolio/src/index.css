@@ -1,0 +1,33 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4;
+  }
+}
+
+@layer utilities {
+  .transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
+:root {
+  --color-primary: #8B5CF6;
+  --color-primary-dark: #7C3AED;
+  --color-secondary: #1F2937;
+  --color-text: #F3F4F6;
+}
+
+body {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}
