@@ -61,6 +61,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://myportfolio-kappa-drab.vercel.app",
     "https://myportfolio-git-main-reshads-projects-72b5569d.vercel.app",
     "https://myportfolio-3n6t01jy4-reshads-projects-72b5569d.vercel.app",
+    "https://jahidulhassanreshad.co"
 ]
 
 
