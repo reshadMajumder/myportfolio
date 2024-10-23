@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c-a^w5@7$a(5gh5srd6dn^k2&#@6drvw02jb$f=u(^9bt3t=mu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -40,12 +40,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'portfolio',
     'corsheaders',
-
-
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
@@ -58,6 +58,9 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:5173",
+    "https://myportfolio-kappa-drab.vercel.app",
+    "https://myportfolio-git-main-reshads-projects-72b5569d.vercel.app",
+    "https://myportfolio-3n6t01jy4-reshads-projects-72b5569d.vercel.app",
 ]
 
 
@@ -106,14 +109,14 @@ DATABASES = {
     }
 }
 
-POSTGRES_URL="postgres://default:51spiRCAzTLX@ep-red-waterfall-a4ezd37u-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
-POSTGRES_PRISMA_URL="postgres://default:51spiRCAzTLX@ep-red-waterfall-a4ezd37u-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
-POSTGRES_URL_NO_SSL="postgres://default:51spiRCAzTLX@ep-red-waterfall-a4ezd37u-pooler.us-east-1.aws.neon.tech:5432/verceldb"
-POSTGRES_URL_NON_POOLING="postgres://default:51spiRCAzTLX@ep-red-waterfall-a4ezd37u.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
-POSTGRES_USER="default"
-POSTGRES_HOST="ep-red-waterfall-a4ezd37u-pooler.us-east-1.aws.neon.tech"
-POSTGRES_PASSWORD="51spiRCAzTLX"
-POSTGRES_DATABASE="verceldb"
+# POSTGRES_URL="postgres://default:51spiRCAzTLX@ep-red-waterfall-a4ezd37u-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
+# POSTGRES_PRISMA_URL="postgres://default:51spiRCAzTLX@ep-red-waterfall-a4ezd37u-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
+# POSTGRES_URL_NO_SSL="postgres://default:51spiRCAzTLX@ep-red-waterfall-a4ezd37u-pooler.us-east-1.aws.neon.tech:5432/verceldb"
+# POSTGRES_URL_NON_POOLING="postgres://default:51spiRCAzTLX@ep-red-waterfall-a4ezd37u.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
+# POSTGRES_USER="default"
+# POSTGRES_HOST="ep-red-waterfall-a4ezd37u-pooler.us-east-1.aws.neon.tech"
+# POSTGRES_PASSWORD="51spiRCAzTLX"
+# POSTGRES_DATABASE="verceldb"
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -148,11 +151,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+import os
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
