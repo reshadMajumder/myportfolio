@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import axios from 'axios';
+import { BASE_URL } from '../service/Api';
 
 interface Project {
   id: number;
@@ -18,7 +19,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/projects/');
+        const response = await axios.get(`${BASE_URL}/projects/`);
         setProjects(response.data);
       } catch (error) {
         console.error('Error fetching projects:', error);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-
+import { BASE_URL } from '../service/Api';
 interface Skill {
   id: number;
   name: string;
@@ -14,7 +14,7 @@ const Skills = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/skills/');
+        const response = await axios.get(`${BASE_URL}/skills/`);
         setSkills(response.data);
       } catch (error) {
         console.error('Error fetching skills:', error);

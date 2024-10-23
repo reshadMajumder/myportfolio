@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { BASE_URL } from '../service/Api';
 
 interface AboutData {
   content: string;
@@ -13,7 +14,7 @@ const About = () => {
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/about/');
+        const response = await axios.get(`${BASE_URL}/about/`);
         setAboutData(response.data);
       } catch (error) {
         console.error('Error fetching about data:', error);

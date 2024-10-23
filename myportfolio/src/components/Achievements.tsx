@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Star, Trophy } from 'lucide-react';
-
+import { BASE_URL } from '../service/Api';
 const iconMap = {
   Award: <Award size={40} className="text-green-500" />,
   Star: <Star size={40} className="text-blue-500" />,
@@ -16,9 +16,8 @@ const Achievements = () => {
     // Fetch data from API
     const fetchAchievements = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/achivements/');
-        const data = await response.json();
-        setAchievements(data);
+        const response = await fetch(`${BASE_URL}/achivements/`);
+        const data = await response.json();        setAchievements(data);
       } catch (error) {
         console.error('Error fetching achievements:', error);
       } finally {

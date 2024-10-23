@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileDown } from 'lucide-react';
 import axios from 'axios';
+import { BASE_URL } from '../service/Api';
 
 interface BannerData {
   title: string;
@@ -16,7 +17,7 @@ const Banner = () => {
   useEffect(() => {
     const fetchBannerData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/banner/');
+        const response = await axios.get(`${BASE_URL}/banner/`);
         setBannerData(response.data);
       } catch (error) {
         console.error('Error fetching banner data:', error);
@@ -25,7 +26,7 @@ const Banner = () => {
 
     const fetchCV = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/cv/');
+        const response = await axios.get(`${BASE_URL}/cv/`);
         setCvUrl(response.data.cv);
       } catch (error) {
         console.error('Error fetching CV:', error);
