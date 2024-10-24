@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # DATABASES = {
 #     'default': {
@@ -107,16 +107,16 @@ WSGI_APPLICATION = 'core.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'portfolio_vxps',                   # Database name
-        'USER': 'portfolio_vxps_user',               # Database user
-        'PASSWORD': 'bzp8LQ2WQ2B0sTzUKQ3S8b8zhYbCB0x1',  # Database password
-        'HOST': 'dpg-cscdui5ds78s738oau00-a.oregon-postgres.render.com',  # Hostname
-        'PORT': '5432',                              # Port
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'portfolio_vxps',                   # Database name
+#         'USER': 'portfolio_vxps_user',               # Database user
+#         'PASSWORD': 'bzp8LQ2WQ2B0sTzUKQ3S8b8zhYbCB0x1',  # Database password
+#         'HOST': 'dpg-cscdui5ds78s738oau00-a.oregon-postgres.render.com',  # Hostname
+#         'PORT': '5432',                              # Port
+#     }
+# }
 
 
 
